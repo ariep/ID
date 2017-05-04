@@ -29,7 +29,7 @@ data WithID a
       __ID :: ID a
     , _object :: a
     }
-  deriving (Eq, Generic, Typeable, Show)
+  deriving (Eq, Ord, Generic, Typeable, Show)
 
 object :: Functor f => (a -> f b) -> WithID a -> f (WithID b)
 object f (WithID (ID t) a) = fmap (WithID (ID t)) (f a)
